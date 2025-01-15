@@ -1,14 +1,14 @@
 
 import "./style.css"
 import Player from "./modules/player";
-import { loadBoard, loadBoardOpponent } from "./modules/dom";
+import { displayBoard, humanBoard, opponentBoard } from "./modules/dom";
 
-let player = new Player();
-let opponent = new Player();
+let human = new Player();
+let opponent = new Player(false);
 
 opponent.data.placeShip(0,0,true, 4);
-loadBoardOpponent(opponent);
+displayBoard(opponent, opponentBoard);
 
 //loadBoard(player);
-player.data.placeShip(1,0,true,3);
-loadBoard(player);
+human.data.placeShip(1,0,true,3);
+displayBoard(human);
