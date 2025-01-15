@@ -5,9 +5,9 @@ class Gameboard {
     constructor() {
         this.cells = {};
         this.board = new Map();
+        this.registeredClicks = new Set();
         this.ships = [];
         this.buildBoard();
-        this.registeredClicks = new Set();
     }
 
     buildBoard() {
@@ -27,7 +27,7 @@ class Gameboard {
                 for (let k = 0; k < length; k++) {
                     if (this.board.get(this.cells[`${posX + k},${posY}`]) !== "empty") {
                         console.log("Error: another ship already in the way");
-                        return;
+                        return false;
                     }
                 }
                 for (let k = 0; k < length; k++) {
@@ -40,7 +40,7 @@ class Gameboard {
                 for (let k = 0; k < length; k++) {
                     if (this.board.get(this.cells[`${posX},${posY + k}`]) !== "empty") {
                         console.log("Error: another ship already in the way");
-                        return;
+                        return false;
                     }
                 }
                 for (let k = 0; k < length; k++) {
@@ -50,6 +50,7 @@ class Gameboard {
             }
         }
         this.ships.push(currentShip);
+        return true;
     }
 
     receiveAttack(posX, posY) {
@@ -72,7 +73,7 @@ class Gameboard {
             }
         }
         this.registeredClicks.add(coord);
-        console.log(this.registeredClicks);
+        //console.log(this.registeredClicks);
     }
 
     changeStateOfSunkenShip(ship) {
