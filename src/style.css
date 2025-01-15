@@ -1,9 +1,14 @@
 
-#playerBoard {
+#container {
+    display: flex;
+    gap: 64px;
+}
+
+.board {
     border: solid blue 2px;
     width: 500px;
     height: 500px;
-    
+
     display: grid;
     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
     gap: 2px;
