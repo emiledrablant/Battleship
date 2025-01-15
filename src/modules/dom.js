@@ -14,10 +14,12 @@ function displayBoard(player, target = humanBoard) {
             const content = player.accessContent(i,j);
 
             if (target === opponentBoard) {
-                cell.addEventListener("click", () => {
-                    player.data.receiveAttack(i, j);
-                    displayBoard(player, opponentBoard);
-                });
+                if (!player.data.registeredClicks.has(player.data.cells[`${i},${j}`])) {
+                    cell.addEventListener("click", () => {
+                        player.data.receiveAttack(i, j);
+                        displayBoard(player, opponentBoard);
+                    });
+                }
             }
             target.appendChild(cell);
 

@@ -16,9 +16,8 @@ displayBoard(human);
 
 
 // Todo:
-// 1. Prevents new click on already visited cells
-// 2. Add random ships placement for the computer
-// 3. Player and computer make a move, turn by turn
-// 4. Check for game over and restart a new game
-// 5. Allow custom ship placement for player by drag and drop
-// 6. Better IA for the ship (aim near a hit rather than pure random)
+// 1. Add random ships placement for the computer
+// 2. Player and computer make a move, turn by turn
+// 3. Check for game over and restart a new game
+// 4. Allow custom ship placement for player by drag and drop
+// 5. Better IA for the ship (aim near a hit rather than pure random)

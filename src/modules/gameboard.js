@@ -7,6 +7,7 @@ class Gameboard {
         this.board = new Map();
         this.ships = [];
         this.buildBoard();
+        this.registeredClicks = new Set();
     }
 
     buildBoard() {
@@ -70,6 +71,8 @@ class Gameboard {
                 }
             }
         }
+        this.registeredClicks.add(coord);
+        console.log(this.registeredClicks);
     }
 
     changeStateOfSunkenShip(ship) {
