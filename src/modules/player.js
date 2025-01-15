@@ -2,9 +2,8 @@
 import Gameboard from "./gameboard";
 
 class Player {
-    constructor(human = true) {
+    constructor() {
         this.data = new Gameboard;
-        this.isHuman = human;
     }
 
     accessContent(x, y) {

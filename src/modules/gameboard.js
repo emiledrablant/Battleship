@@ -16,25 +16,39 @@ class Gameboard {
                 this.board.set(this.cells[`${i},${j}`], "empty");
             }
         }
-        
     }
 
     placeShip(posX, posY, xAxis, length) {
         let currentShip = new Ship(length);
         
-        // TODO : yAxis and check for when a ship is already in the way of another.
-        
         if (xAxis) {
             if (posX + length < 11) {
                 for (let k = 0; k < length; k++) {
+                    if (this.board.get(this.cells[`${posX + k},${posY}`]) !== "empty") {
+                        console.log("Error: another ship already in the way");
+                        return;
+                    }
+                }
+                for (let k = 0; k < length; k++) {
                     this.board.set(this.cells[`${posX + k},${posY}`], "ship");
                     currentShip.position.push(`${posX + k},${posY}`);
-                    //addCell(coord);
                 }
             }
-            this.ships.push(currentShip);
+        } else {
+            if (posY + length < 11) {
+                for (let k = 0; k < length; k++) {
+                    if (this.board.get(this.cells[`${posX},${posY + k}`]) !== "empty") {
+                        console.log("Error: another ship already in the way");
+                        return;
+                    }
+                }
+                for (let k = 0; k < length; k++) {
+                    this.board.set(this.cells[`${posX},${posY + k}`], "ship");
+                    currentShip.position.push(`${posX},${posY + k}`);
+                }
+            }
         }
-        //console.log(this.ships);
+        this.ships.push(currentShip);
     }
 
     receiveAttack(posX, posY) {
