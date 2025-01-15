@@ -53,7 +53,6 @@ class Gameboard {
                 }
             }
         }
-        //console.log(this.board.get(coord));
     }
 
     checkForGameOver() {

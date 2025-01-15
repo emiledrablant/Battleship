@@ -16,10 +16,20 @@
 }
 
 .cell {
-    background-color: aqua;
     padding: 8px;
-    
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.empty {
+    background-color: rgb(197, 252, 252);
+}
+
+.hit {
+    background-color: orange;
+}
+
+.sunk {
+    background-color: red;
 }
