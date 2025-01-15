@@ -60,12 +60,21 @@ class Gameboard {
         } else {
             for (const ship of this.ships) {
                 if (ship.position.includes(`${posX},${posY}`)) {
-                    this.board.set(coord, "hit");
                     ship.hit();
-                    ship.isSunk() ? console.log("Coulé !") : console.log("Touché !");
-                    return;
+                    if (ship.isSunk()) {
+                        this.board.set(coord, "sunk");
+                        this.changeStateOfSunkenShip(ship);
+                    } else {
+                        this.board.set(coord, "hit");
+                    }
                 }
             }
+        }
+    }
+
+    changeStateOfSunkenShip(ship) {
+        for (let part of ship.position) {
+            this.board.set(this.cells[part], "sunk");
         }
     }
 

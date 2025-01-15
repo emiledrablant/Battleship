@@ -25,6 +25,10 @@ function displayBoard(player, target = humanBoard) {
                 cell.textContent = "X";
                 cell.classList.remove("empty");
                 cell.classList.add("hit");
+            } else if (content === "sunk") {
+                cell.textContent = "X";
+                cell.classList.remove("empty");
+                cell.classList.add("sunk");
             } else if (content === "miss") {
                 cell.textContent = "~";
             } else {

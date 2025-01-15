@@ -16,7 +16,7 @@ displayBoard(human);
 
 
 // Todo:
-// 1. Sunken ships are displayed accurately on the screen
+// 1. Prevents new click on already visited cells
 // 2. Add random ships placement for the computer
 // 3. Player and computer make a move, turn by turn
 // 4. Check for game over and restart a new game
