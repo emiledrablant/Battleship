@@ -9,11 +9,11 @@ function loadBoard(player) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
 
-            const content = player.board.board.get(player.board.cells[`${i},${j}`]);
+            const content = player.accessContent(i,j);
             cell.textContent = content.charAt(0).toUpperCase();
 
             cell.addEventListener("click", () => {
-                const result = player.board.board.get(player.board.cells[`${i},${j}`]);
+                const result = player.data.board.get(player.data.cells[`${i},${j}`]);
                 console.log(result);
             });
             playerBoard.appendChild(cell);

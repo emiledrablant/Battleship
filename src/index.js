@@ -5,9 +5,9 @@ import { loadBoard } from "./modules/dom";
 
 let player = new Player();
 //loadBoard(player);
-player.board.placeShip(1,0,true,3);
+player.data.placeShip(1,0,true,3);
 loadBoard(player);
-console.log(player.board.board);
+console.log(player.data.board);
 
 //addCell("abbbb");
 
