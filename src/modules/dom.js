@@ -16,8 +16,8 @@ function displayBoard(player, target = humanBoard) {
             const content = player.accessContent(i,j);
 
             if (target === opponentBoard) {
-                cell.addEventListener("click", async () => {
-                    await player.data.receiveAttack(i, j);
+                cell.addEventListener("click", () => {
+                    player.data.receiveAttack(i, j);
                     displayBoard(player, opponentBoard);
                     player.turnToPlay = false;
                 });
@@ -40,9 +40,7 @@ function displayBoard(player, target = humanBoard) {
                 cell.classList.add("sunk");
             } else if (content === "miss") {
                 cell.textContent = "~";
-            }// else {
-               // cell.textContent = " ";
-            //}
+            }
         }
     }
 }

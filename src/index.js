@@ -12,14 +12,14 @@ let game = new Game(human, opponent);
 
 let isGameOver = false;
 
-human.placeShipsRandomly();
-opponent.placeShipsRandomly();
+human.deployFleet();
+opponent.deployFleet();
 
 displayBoard(opponent, opponentBoard);
 displayBoard(human);
 
-console.log(human.name, human.data.turnToPlay);
-console.log(opponent.name, opponent.data.turnToPlay);
+console.log(human.name, human.board.turnToPlay);
+console.log(opponent.name, opponent.board.turnToPlay);
 
 
 

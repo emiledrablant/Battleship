@@ -1,4 +1,5 @@
 
+import { randomNumbers } from "./global";
 import Ship from "./ship";
 
 class Gameboard {
@@ -54,6 +55,22 @@ class Gameboard {
         }
         this.ships.push(currentShip);
         return true;
+    }
+
+    placeShipsRandomly() {
+        let ships = [2, 3, 3, 4, 5];
+        for (const ship of ships) {
+            let shipPlacement = false;
+            let safeCount = 0;
+            while (!shipPlacement) {
+                let r = randomNumbers();
+                shipPlacement = this.placeShip(r[0], r[1], r[2] % 2, ship);
+                safeCount++;
+                if (safeCount >= 20) {
+                    break;
+                }
+            }
+        }
     }
 
     // Check the state of the board and update it accordingly.
