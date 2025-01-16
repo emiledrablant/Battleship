@@ -23,9 +23,15 @@ function displayBoard(player, target = humanBoard) {
             }
             target.appendChild(cell);
 
+            if (target === humanBoard && content === "ship") {
+                cell.textContent = "S";
+                cell.classList.add("ship");
+            }
+
             if (content === "hit") {
                 cell.textContent = "X";
                 cell.classList.remove("empty");
+                cell.classList.remove("ship");
                 cell.classList.add("hit");
             } else if (content === "sunk") {
                 cell.textContent = "X";
@@ -33,9 +39,9 @@ function displayBoard(player, target = humanBoard) {
                 cell.classList.add("sunk");
             } else if (content === "miss") {
                 cell.textContent = "~";
-            } else {
-                cell.textContent = " ";
-            }
+            }// else {
+               // cell.textContent = " ";
+            //}
         }
     }
 }

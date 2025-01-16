@@ -26,6 +26,10 @@
     background-color: rgb(197, 252, 252);
 }
 
+.ship {
+    background-color: rgb(59, 59, 241);
+}
+
 .hit {
     background-color: orange;
 }

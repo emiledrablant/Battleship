@@ -21,3 +21,4 @@ opponent.placeShipsRandomly();
 // 2. Check for game over and restart a new game
 // 3. Allow custom ship placement for player by drag and drop
 // 4. Better IA for the ship (aim near a hit rather than pure random)
+// 5. Allow random ship placement for player
