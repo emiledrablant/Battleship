@@ -1,4 +1,5 @@
 
+import { randomNumbers } from "./global";
 import Gameboard from "./gameboard";
 
 class Player {
@@ -17,10 +18,9 @@ class Player {
             let shipPlacement = false;
             let safeCount = 0;
             while (!shipPlacement) {
-                let r = this.randomNumbers();
+                let r = randomNumbers();
                 shipPlacement = this.data.placeShip(r[0], r[1], r[2] % 2, ship);
                 safeCount++;
-                //console.log(r[0], r[1], r[2] % 2, ship);
                 if (safeCount >= 20) {
                     break;
                 }
@@ -28,17 +28,7 @@ class Player {
         }
     }
 
-    randomNumbers() {
-        let min = 0;
-        let max = 9;
-        let result = [];
-
-        for (let i = 0; i < 3; i++) {
-            let n = Math.floor(Math.random() * (max - min + 1)) + min;
-            result.push(n);
-        }
-        return result;
-    }
+    
 }
 
 export default Player;
