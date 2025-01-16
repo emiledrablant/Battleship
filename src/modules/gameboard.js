@@ -24,26 +24,25 @@ class Gameboard {
         let currentShip = new Ship(length);
         
         if (xAxis) {
-            if (posX + length < 11) {
+            if (posX + length > 10) {
+                return false; // Abort if the placement is out of bounds
+            } else {
                 for (let k = 0; k < length; k++) {
                     if (this.board.get(this.cells[`${posX + k},${posY}`]) !== "empty") {
-                        //console.log("Error: another ship already in the way");
-                        return false;
+                        return false; // Abord if there is already a ship in the way
                     }
                 }
                 for (let k = 0; k < length; k++) {
                     this.board.set(this.cells[`${posX + k},${posY}`], "ship");
                     currentShip.position.push(`${posX + k},${posY}`);
                 }
-            } else {
-                //console.log("Error: out of bounds");
-                return false;
             }
-        } else {
-            if (posY + length < 11) {
+        } else { // Do the same kind of checks but for the Y axis.
+            if (posY + length > 10) {
+                return false;
+            } else {
                 for (let k = 0; k < length; k++) {
                     if (this.board.get(this.cells[`${posX},${posY + k}`]) !== "empty") {
-                        //console.log("Error: another ship already in the way");
                         return false;
                     }
                 }
@@ -51,9 +50,6 @@ class Gameboard {
                     this.board.set(this.cells[`${posX},${posY + k}`], "ship");
                     currentShip.position.push(`${posX},${posY + k}`);
                 }
-            } else {
-                //console.log("Error: out of bounds");
-                return false;
             }
         }
         this.ships.push(currentShip);
@@ -85,7 +81,7 @@ class Gameboard {
         this.registeredClicks.add(coord);
     }
 
-    // update the board map to mark the ships as sunk when it is the case.
+    // Update the board map to mark the ships as sunk when it is the case.
     // Not meant to be called directly.
     changeStateOfSunkenShip(ship) {
         for (let part of ship.position) {
@@ -93,7 +89,7 @@ class Gameboard {
         }
     }
 
-    // return true if all the ships contained in the board are sunk.
+    // Return true if all the ships contained in the board are sunk.
     checkForGameOver() {
         for (const ship of this.ships) {
             if (!ship.isSunk()) return false;
