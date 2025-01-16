@@ -1,24 +1,41 @@
 
 import "./style.css"
+
+import Game from "./modules/game";
 import Player from "./modules/player";
 import { displayBoard, humanBoard, opponentBoard } from "./modules/dom";
 
-let human = new Player();
-let opponent = new Player();
+let human = new Player("human", true);
+let opponent = new Player("computer", false);
 
-//opponent.data.placeShip(0,0,false, 4);
-//opponent.data.placeShip(0,3,true, 2);
+let game = new Game(human, opponent);
+
+let isGameOver = false;
+
+human.placeShipsRandomly();
+opponent.placeShipsRandomly();
+
 displayBoard(opponent, opponentBoard);
-
-//loadBoard(player);
-human.data.placeShip(1,0,true,3);
 displayBoard(human);
 
-opponent.placeShipsRandomly();
+console.log(human.name, human.data.turnToPlay);
+console.log(opponent.name, opponent.data.turnToPlay);
+
+
+
+/*
+while (!isGameOver) {
+    if (!human.turnToPlay) {
+        console.log("test");
+        human.turnToPlay = true;
+    }
+    
+}*/
+
+
 
 // Todo:
 // 1. Player and computer make a move, turn by turn
 // 2. Check for game over and restart a new game
 // 3. Allow custom ship placement for player by drag and drop
 // 4. Better IA for the ship (aim near a hit rather than pure random)
-// 5. Allow random ship placement for player

@@ -1,4 +1,6 @@
 
+import Game from "./game";
+
 const humanBoard = document.getElementById("humanBoard");
 const opponentBoard = document.getElementById("opponentBoard");
 
@@ -14,12 +16,11 @@ function displayBoard(player, target = humanBoard) {
             const content = player.accessContent(i,j);
 
             if (target === opponentBoard) {
-                if (!player.data.registeredClicks.has(player.data.cells[`${i},${j}`])) {
-                    cell.addEventListener("click", () => {
-                        player.data.receiveAttack(i, j);
-                        displayBoard(player, opponentBoard);
-                    });
-                }
+                cell.addEventListener("click", async () => {
+                    await player.data.receiveAttack(i, j);
+                    displayBoard(player, opponentBoard);
+                    player.turnToPlay = false;
+                });
             }
             target.appendChild(cell);
 

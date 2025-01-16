@@ -2,8 +2,9 @@
 import Gameboard from "./gameboard";
 
 class Player {
-    constructor() {
-        this.data = new Gameboard;
+    constructor(name,turn) {
+        this.data = new Gameboard(turn);
+        this.name = name;
     }
 
     accessContent(x, y) {
@@ -19,21 +20,12 @@ class Player {
                 let r = this.randomNumbers();
                 shipPlacement = this.data.placeShip(r[0], r[1], r[2] % 2, ship);
                 safeCount++;
-                console.log(r[0], r[1], r[2] % 2, ship);
+                //console.log(r[0], r[1], r[2] % 2, ship);
                 if (safeCount >= 20) {
                     break;
                 }
             }
         }
-        
-        /*for (let i = 0; i < 5; i++) {
-            let shipPlacement = false;
-            while (!shipPlacement) {
-                let r = this.randomNumbers();
-                shipPlacement = this.data.placeShip(r[0], r[1], r[2] % 2, ships.pop());
-                console.log(r[0], r[1], r[2] % 2, shipPlacement);
-            }
-        }*/
     }
 
     randomNumbers() {
