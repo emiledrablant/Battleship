@@ -34,6 +34,9 @@ class Gameboard {
                     this.board.set(this.cells[`${posX + k},${posY}`], "ship");
                     currentShip.position.push(`${posX + k},${posY}`);
                 }
+            } else {
+                console.log("Error: out of bounds");
+                return false;
             }
         } else {
             if (posY + length < 11) {
@@ -47,6 +50,9 @@ class Gameboard {
                     this.board.set(this.cells[`${posX},${posY + k}`], "ship");
                     currentShip.position.push(`${posX},${posY + k}`);
                 }
+            } else {
+                console.log("Error: out of bounds");
+                return false;
             }
         }
         this.ships.push(currentShip);
