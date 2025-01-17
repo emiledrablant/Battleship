@@ -18,7 +18,7 @@ function displayBoard(target) {
             if (target === boardRight) {
                 cell.addEventListener("click", () => {
                     currentPlayer.board.receiveAttack(i, j);
-                });
+                }, { once: true });
             }
             target.appendChild(cell);
 

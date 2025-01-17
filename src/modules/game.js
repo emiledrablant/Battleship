@@ -9,11 +9,6 @@ class Game {
 
         this.player1.enemy = this.player2.board;
         this.player2.enemy = this.player1.board;
-/*
-        this.player1.deployFleet();
-        this.player2.deployFleet();
-        displayBoard(this.player1);
-        displayBoard(this.player2);*/
     }
 
     /*

@@ -76,6 +76,7 @@ class Gameboard {
 
     // Check the state of the board and update it accordingly.
     receiveAttack(posX, posY) {
+        console.log("enter");
         const coord = this.cells[`${posX},${posY}`];
         const status = this.board.get(coord);
 
@@ -99,7 +100,7 @@ class Gameboard {
         this.registeredClicks.add(coord);
         displayBoard(boardRight);
         
-        game.player2.currentTurn = true;
+        //game.player2.currentTurn = true;
         game.player2.sendAttackAI();
     }
 
