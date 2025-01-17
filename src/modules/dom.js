@@ -1,10 +1,11 @@
+import { game } from "..";
 
 const boardLeft = document.getElementById("boardLeft");
 const boardRight = document.getElementById("boardRight");
 
-function displayBoard(player) {
-    let target;
-    player.name === "Human" ? target = boardLeft : target = boardRight;
+function displayBoard(target) {
+    let currentPlayer;
+    target === boardLeft ? currentPlayer = game.player1 : currentPlayer = game.player2;
     target.textContent = '';
 
     for (let j = 0; j < 10; j++) {
@@ -12,12 +13,11 @@ function displayBoard(player) {
             const cell = document.createElement("div");
             cell.classList.add("cell");
 
-            const content = player.accessContent(i,j);
+            const content = currentPlayer.accessContent(i,j);
 
             if (target === boardRight) {
                 cell.addEventListener("click", () => {
-                    player.board.receiveAttack(i, j, player);
-                    //displayBoard(player);
+                    currentPlayer.board.receiveAttack(i, j);
                 });
             }
             target.appendChild(cell);
@@ -41,4 +41,4 @@ function displayBoard(player) {
     }
 }
 
-export { displayBoard };
+export { displayBoard, boardLeft, boardRight };

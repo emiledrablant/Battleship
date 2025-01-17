@@ -1,12 +1,13 @@
 
 import Gameboard from "./gameboard";
-import { displayBoard } from "./dom";
+import { boardLeft, displayBoard } from "./dom";
 import { randomNumbers } from "./global";
 
 class Player {
     constructor(name) {
         this.board = new Gameboard();
         this.name = name;
+        this.currentTurn = false;
         this.enemy;
     }
 
@@ -25,7 +26,9 @@ class Player {
     
     sendAttackAI() {
         const r = randomNumbers();
-        this.enemy.receiveAttack(r[0], r[1])
+        this.enemy.receiveAttack(r[0], r[1]);
+        displayBoard(boardLeft);
+        //this.currentTurn = false;
     }
 }
 

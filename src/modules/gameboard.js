@@ -1,7 +1,8 @@
 
 import { randomNumbers } from "./global";
 import Ship from "./ship";
-import { displayBoard } from "./dom";
+import { boardLeft, boardRight, displayBoard } from "./dom";
+import { game } from "..";
 
 class Gameboard {
     constructor() {
@@ -74,7 +75,7 @@ class Gameboard {
     }
 
     // Check the state of the board and update it accordingly.
-    receiveAttack(posX, posY, player) {
+    receiveAttack(posX, posY) {
         const coord = this.cells[`${posX},${posY}`];
         const status = this.board.get(coord);
 
@@ -96,8 +97,10 @@ class Gameboard {
             }
         }
         this.registeredClicks.add(coord);
-        displayBoard(player);
-        //player.sendAttackAI();
+        displayBoard(boardRight);
+        
+        game.player2.currentTurn = true;
+        game.player2.sendAttackAI();
     }
 
     // Update the board map to mark the ships as sunk when it is the case.
