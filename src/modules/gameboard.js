@@ -1,15 +1,15 @@
 
 import { randomNumbers } from "./global";
 import Ship from "./ship";
+import { displayBoard } from "./dom";
 
 class Gameboard {
-    constructor(turn) {
+    constructor() {
         this.cells = {};
         this.board = new Map();
         this.registeredClicks = new Set();
         this.ships = [];
         this.buildBoard();
-        //this.turnToPlay = turn;
     }
 
     buildBoard() {
@@ -74,11 +74,11 @@ class Gameboard {
     }
 
     // Check the state of the board and update it accordingly.
-    receiveAttack(posX, posY) {
+    receiveAttack(posX, posY, player) {
         const coord = this.cells[`${posX},${posY}`];
         const status = this.board.get(coord);
 
-        // Abord the function if the cell have already been clicked.
+        // Abort the function if the cell have already been clicked.
         if (this.registeredClicks.has(coord)) return;
 
         if (status === "empty") {
@@ -96,6 +96,8 @@ class Gameboard {
             }
         }
         this.registeredClicks.add(coord);
+        displayBoard(player);
+        //player.sendAttackAI();
     }
 
     // Update the board map to mark the ships as sunk when it is the case.

@@ -1,6 +1,11 @@
 
 import "./style.css"
 
+import Game from "./modules/game"
+
+const game = new Game();
+
+/*
 import Game from "./modules/game";
 import Player from "./modules/player";
 import { displayBoard, humanBoard, opponentBoard } from "./modules/dom";
