@@ -8,9 +8,9 @@ const game = new Game();
 
 game.player1.deployFleet();
 game.player2.deployFleet();
-displayBoard(boardLeft);
 displayBoard(boardRight);
-//game.player1.currentTurn = true;
+displayBoard(boardLeft);
+game.player1.currentTurn = true;
 
 export { game };
 

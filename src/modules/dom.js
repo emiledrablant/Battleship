@@ -16,9 +16,19 @@ function displayBoard(target) {
             const content = currentPlayer.accessContent(i,j);
 
             if (target === boardRight) {
+                /*
+                USING A WRAPPER DOESN'T WORK
+
+                cell.addEventListener("click", attackWrapper);
+
+                function attackWrapper() {
+                    currentPlayer.board.receiveAttack(i, j);
+                    cell.removeEventListener("click", attackWrapper);
+                }*/
+
                 cell.addEventListener("click", () => {
                     currentPlayer.board.receiveAttack(i, j);
-                }, { once: true });
+                }, { once: true }); // USING { ONCE: TRUE } DOESN'T WORK EITHER
             }
             target.appendChild(cell);
 
